@@ -1,19 +1,4 @@
 // Variables from HTML
-let todayNow = document.querySelector("#currentDay");
-let nineTime = document.querySelector('#nineHour')
-let nineInput = document.querySelector('#nineInput')
-let tenTime = document.querySelector("#tenHour")
-let tenInput = document.querySelector("#tenInput")
-
-
-// Variables for scripts
-let nowDay = moment().format("dddd, MM/DD/YYYY"); 
-let nowObject = moment().toObject();
-const calTimeObj = [
-    {
-
-    }
-]
 const calElementIdsObj = [
     {hour: document.querySelector('#nineHour'),
     input: document.querySelector('#nineInput')},
@@ -35,8 +20,14 @@ const calElementIdsObj = [
     input: document.querySelector('#fiveInput')},
 ]
 
+// Variables for scripts
+let nowDay = moment().format("dddd, MM/DD/YYYY"); 
+let nowObject = moment().toObject();
+const calTimeObj = [{}]
+const calInputObj = [{}]
+
 // Adjusting HTML
-todayNow.innerHTML = nowDay;
+$("#currentDay").text(nowDay)
 for (let i = 0; i < calElementIdsObj.length; i++) {
     let time = 9
     let hour = moment().set({hour:time+i}).format("hh:00 a");
@@ -44,12 +35,25 @@ for (let i = 0; i < calElementIdsObj.length; i++) {
     calTimeObj[i] = moment().set({hour:time+i}).toObject();
 }
 
-console.log(nowObject.hours)
-console.log(calTimeObj[1].hours)
-
-if(nowObject.hours < calTimeObj[0].hours){
-    console.log("true")
+for (let i = 0; i < calElementIdsObj.length; i++) {
+    if(nowObject.hours > calTimeObj[i].hours) {
+        calElementIdsObj[i].input.style.backgroundColor = 'red';
+    }
+    else if(nowObject.hours === calTimeObj[i].hours) {
+        calElementIdsObj[i].input.style.backgroundColor = 'lightgreen';
+    }
+    else {
+        calElementIdsObj[i].input.style.backgroundColor = 'lightblue';
+    }   
 }
+
 // Functions
+
     
 // EventListeners
+// Ended here need to finish function so input is saved to memory and is appended to the correct input. Do this by saving it to the same object number in the object above then calling that objet number. 
+$(":button").click(function (event) {
+    console.log(event.target.id + ' is clicked!');
+
+});
+
