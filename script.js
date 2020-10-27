@@ -35,20 +35,21 @@ const calElementIdsObj = [
     input: document.querySelector('#fiveInput')},
 ]
 
-
-// Functions
-
-
-
-
 // Adjusting HTML
 todayNow.innerHTML = nowDay;
-
 for (let i = 0; i < calElementIdsObj.length; i++) {
     let time = 9
     let hour = moment().set({hour:time+i}).format("hh:00 a");
     calElementIdsObj[i].hour.textContent = hour;
-    calTimeObj[i] = hour;
+    calTimeObj[i] = moment().set({hour:time+i}).toObject();
 }
+
+console.log(nowObject.hours)
+console.log(calTimeObj[1].hours)
+
+if(nowObject.hours < calTimeObj[0].hours){
+    console.log("true")
+}
+// Functions
     
 // EventListeners
