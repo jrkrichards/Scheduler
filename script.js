@@ -37,7 +37,7 @@ let nowObject = moment().toObject();
 const calTimeObj = [{}]
 const calInputObj = []
 let appArray = [" ", " ", " ", " ", " ", " ", " ", " ", " "]
-const appointments = localStorage.getItem('appointments')
+const appointments = localStorage.getItem('appointments') || [" ", " ", " ", " ", " ", " ", " ", " ", " "]
 
 
 // Adjusting HTML
@@ -61,14 +61,14 @@ for (let i = 0; i < calElementIdsObj.length; i++) {
     }   
 }
 
-// for (let i = 0; i < calElementIdsObj.length; i++) {
-//     let inputID = calElementIdsObj[i].input.id
-//     let inputNeed = $(`#${inputID}`)
-//     let appointInput = appointments[i]
-//     inputNeed.attr('placeholder', appointInput)
-//     console.log(inputID)
-//     console.log(appointInput)
-// }
+for (let i = 0; i < calElementIdsObj.length; i++) {
+    let inputID = calElementIdsObj[i].input.id
+    let inputNeed = $(`#${inputID}`)
+    let appointInput = localStorage.getItem(`${i}`)
+    inputNeed.attr('placeholder', appointInput)
+    console.log(inputID)
+    console.log(appointInput)
+}
 // let test = calElementIdsObj[0].input.id
 // let test1 = $(`#${test}`)
 // test1.placeholder = "test"
@@ -82,15 +82,18 @@ for (let i = 0; i < calElementIdsObj.length; i++) {
 
     
 // EventListeners
+// ENDED HERE NEED TO WORK THROUGH BUGS IN STORAGE
 $(":button").click(function (event) {
     event.preventDefault();
     let currentId = $(this).attr("id");
     let currentIndex = buttonObj[currentId] 
     let currentAppoint = calElementIdsObj[currentIndex].input.value
-    appArray[currentIndex] = currentAppoint;
-    localStorage.setItem('appointments', appArray);
+    appointments[currentIndex] = currentAppoint;
+    localStorage.setItem(`${currentIndex}`, currentAppoint);
     console.log(currentId +" is clicked!")
+    console.log(`${currentIndex}`)
 });
 
+console.log(localStorage.getItem('0'))
 console.log(appointments)
 console.log(appointments[0])
