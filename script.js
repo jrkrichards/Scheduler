@@ -65,20 +65,14 @@ for (let i = 0; i < calElementIdsObj.length; i++) {
 
     
 // EventListeners
-// Ended here need to finish function so input is saved to memory and is appended to the correct input. Do this by saving it to the same object number in the object above then calling that objet number. consider making an object in here with the key being the id of the button and the value being the index needed to be adjusted. 
 $(":button").click(function (event) {
     event.preventDefault();
     let currentId = $(this).attr("id");
     let currentIndex = buttonObj[currentId] 
     let currentAppoint = calElementIdsObj[currentIndex].input.value
-    console.log(currentId + ' is clicked!');
-    console.log(currentIndex);
-    console.log(currentAppoint)
     appArray[currentIndex] = currentAppoint;
-    console.log(appArray)
-
     localStorage.setItem('appointments', appArray);
-
-   console.log(localStorage.getItem('appointments'));
 });
+
+
 console.log(appointments)
