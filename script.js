@@ -61,6 +61,23 @@ for (let i = 0; i < calElementIdsObj.length; i++) {
     }   
 }
 
+// for (let i = 0; i < calElementIdsObj.length; i++) {
+//     let inputID = calElementIdsObj[i].input.id
+//     let inputNeed = $(`#${inputID}`)
+//     let appointInput = appointments[i]
+//     inputNeed.attr('placeholder', appointInput)
+//     console.log(inputID)
+//     console.log(appointInput)
+// }
+// let test = calElementIdsObj[0].input.id
+// let test1 = $(`#${test}`)
+// test1.placeholder = "test"
+// console.log(test1)
+// let test = $('#tenInput')[0];
+// let placeholderTest = appointments[0].toString();
+// console.log(calElementIdsObj[0].input.id)
+// test.placeholder = placeholderTest;
+
 // Functions
 
     
@@ -72,7 +89,8 @@ $(":button").click(function (event) {
     let currentAppoint = calElementIdsObj[currentIndex].input.value
     appArray[currentIndex] = currentAppoint;
     localStorage.setItem('appointments', appArray);
+    console.log(currentId +" is clicked!")
 });
 
-
 console.log(appointments)
+console.log(appointments[0])
